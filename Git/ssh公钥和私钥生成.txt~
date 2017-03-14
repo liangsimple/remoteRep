@@ -1,0 +1,43 @@
+在 ～/  目录下创建.ssh目录
+
+mkdir ～/.ssh
+
+进入.ssh文件夹
+
+cd ~/.ssh
+
+创建公钥和私钥
+
+ssh-keygen -t rsa -C "846221927@qq.com"
+
+-C表示编辑文件名
+所以指令输入之后会提示你输入保存秘钥的文件名
+
+对应的邮箱会收到邮件提示，可以无视
+
+接下来会让你输入密码，可以为空，也可以设置
+
+完成之后可以看到在～/.ssh文件夹下会生成两个
+刚刚命名的文件，一个后缀为 .pub 可以用office打开
+这个就是我们需要上传到github上的公钥。
+
+到对应的界面上传即可
+
+
+×××注意，要使ssh生效，必须将git的克隆方式改为ssh
+（配置的时候，这里如果使用的是https，即
+git remote add origin URL这种方式，则要改）
+
+改为ssh方式
+git remote set-url origin git@github.com:liangsimple/remoteRep.git
+ssh地址在git仓库的clone or download哪里，选择ssh方式即可；
+可以使用以下指令测试ssh是否生效
+ssh -T git@github.com:liangsimple/remoteRep.git
+如果在生成公钥和私钥的时候有设置私钥的密码的话，这里点击继续，然后输入设置的私钥密码解密
+然后会在.ssh文件夹下生成known_hosts文件，这样就表示设置成功。尝试链接，提交更改；
+
+附带：改为https方式 git remote set-url origin https://github.com/liangsimple/remoteRep
+https地址直接使用打开git仓库的url
+
+
+

@@ -1,0 +1,48 @@
+1、在本地安装git
+sudo apt-get install git
+2、创建本地仓库
+创建目录
+mkdir /home/simple/local_git_repository
+进入目录
+cd /home/simple/local_git_repository
+查看当前目录
+pwd
+进入正确的目录之后，使用git将该目录初始化为本地git仓库
+git init
+在/home/simple/local_git_repository路径下会出现一个.git的文件夹，其中保存着git的配置文件
+3、在github上创建自己的远程仓库
+注册账户
+通过可视化界面创建仓库（注意：创建仓库的时候不要选择使用其他文件初始化，否则在上传项目上去的时候会有冲突，报错）
+在本地的git仓库目录下，关联git远程和本地两个仓库
+
+git remote add origin URL
+URL为你新建的仓库的访问地址,这里使用的是https方式
+
+查看所有的远程仓库，会显示有origin仓库
+git remote -v
+
+查看origin仓库的详细内容：
+git remote show origin
+会打印出所设置的URL链接和仓库名字，已经当前的头指针 Head 所在的分支
+
+在保证没有冲突的情况下，上传我们本地仓库的项目到远程github上，并设置为源版本
+git push -u origin master
+
+现在就已经可以在github上查看到我们push上去的源项目了
+
+（ps：可以更改远程的git仓库的地址：
+移除原有的远程地址
+  【1
+git remote rm origin
+新建
+git remote add origin URL
+  【2
+或直接指定url：
+git remote set-url origin xxxx
+  【3
+还可以直接修改.git文件夹里的config文件
+	[remote "origin"]
+		url="URL_you_want"
+
+）
+
